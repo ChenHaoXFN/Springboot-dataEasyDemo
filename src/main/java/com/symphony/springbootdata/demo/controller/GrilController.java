@@ -46,26 +46,38 @@ public class GrilController {
     return "ID: " + id;
   }
 
-
+  /**
+   * 查找所有女生.
+   */
   @GetMapping("/grils")
   public List<Gril> findUser() {
     return grilRepository.findAll();
   }
 
+  /**
+   * 添加女生.
+   */
   @PostMapping("/grils")
-  public Gril addUser(@Valid Gril gril,BindingResult bindingResult) {
-    if (bindingResult.hasErrors()){
+  public Gril addUser(@Valid Gril gril, BindingResult bindingResult) {
+    if (bindingResult.hasErrors()) {
       System.out.println(bindingResult.getFieldError().getDefaultMessage());
       return null;
     }
     return grilRepository.save(gril);
   }
 
+
+  /**
+   * 根据id查找女生.
+   */
   @GetMapping("/grils/{id}")
   public Gril finOneGril(@PathVariable(value = "id") Integer id) {
     return grilRepository.findOne(id);
   }
 
+  /**
+   * 添加女生.
+   */
   @PutMapping("grils/{id}")
   public Gril updataGril(@PathVariable(value = "id") Integer id,
       @RequestParam("name") String name,
@@ -73,13 +85,19 @@ public class GrilController {
     return grilRepository.save(new Gril(id, name, age));
   }
 
+  /**
+   * 根据id删除女生.
+   */
   @DeleteMapping("/grils/{id}")
-  public void delGril(@PathVariable("id") Integer id){
+  public void delGril(@PathVariable("id") Integer id) {
     grilRepository.delete(id);
   }
 
+  /**
+   * 根据年龄搜索女生.
+   */
   @GetMapping("grils/agee/{age}")
-  public List<Gril> findByAge(@PathVariable("age") Integer age){
+  public List<Gril> findByAge(@PathVariable("age") Integer age) {
     return grilRepository.findByAge(age);
   }
 
