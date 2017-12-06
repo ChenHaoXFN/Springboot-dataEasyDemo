@@ -2,7 +2,7 @@ server:
   port: 8081
   tomcat:
     uri-encoding: UTF-8
-
+#在yml中配置的属性可以再java代码中使用
 gril:
   cupSize: B
   age: 18

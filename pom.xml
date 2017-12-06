@@ -46,10 +46,10 @@
 		</dependency>
 
 		<!--aop-->
-		<dependency>
+	<!--	<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-startet-aop</artifactId>
-		</dependency>
+		</dependency>-->
 
 		<!--实用注解gettersettetdata之类的-->
 		<dependency>

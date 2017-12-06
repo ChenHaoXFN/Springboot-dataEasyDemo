@@ -1,10 +1,14 @@
 package com.symphony.springbootdata.demo.controller;
 
-import com.symphony.springbootdata.demo.domain.Gril;
 import com.symphony.springbootdata.demo.GrilPro;
 import com.symphony.springbootdata.demo.GrilRepository;
+import com.symphony.springbootdata.demo.Result.GrilResult;
+import com.symphony.springbootdata.demo.domain.Gril;
+import com.symphony.springbootdata.demo.service.GrilService;
 import java.util.List;
 import javax.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.BindingResult;
@@ -21,18 +25,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GrilController {
 
+  //使用log日志打印注意导报类型.
+  private final static Logger logger = LoggerFactory.getLogger(GrilController.class);
+
   @Autowired
   private GrilRepository grilRepository;
 
   @Autowired
   private GrilPro grilPro;
 
+  @Autowired
+  private GrilService grilService;
+
+  // 在yml中配置的属性，在java代码中可以用@value注解进行使用.
   @Value("${commont}")
   private String commont;
 
   @RequestMapping(value = "hello", method = RequestMethod.GET)
   public String sayHello() {
-//    return "hello" + grilPro.getCupSize() + grilPro.getAge();
+    //    return "hello" + grilPro.getCupSize() + grilPro.getAge();
     return commont;
   }
 
@@ -58,12 +69,18 @@ public class GrilController {
    * 添加女生.
    */
   @PostMapping("/grils")
-  public Gril addUser(@Valid Gril gril, BindingResult bindingResult) {
+  public GrilResult addUser(@Valid Gril gril, BindingResult bindingResult) {
     if (bindingResult.hasErrors()) {
-      System.out.println(bindingResult.getFieldError().getDefaultMessage());
-      return null;
+      GrilResult result = new GrilResult();
+      result.setCode(1);
+      result.setMsg(bindingResult.getFieldError().getDefaultMessage());
+      return result;
     }
-    return grilRepository.save(gril);
+    GrilResult result = new GrilResult();
+    result.setCode(0);
+    result.setMsg("成功");
+    result.setData(grilRepository.save(gril));
+    return result;
   }
 
 
@@ -72,7 +89,8 @@ public class GrilController {
    */
   @GetMapping("/grils/{id}")
   public Gril finOneGril(@PathVariable(value = "id") Integer id) {
-    return grilRepository.findOne(id);
+    grilService.findGrilId(id);
+    return grilService.findGrilById(id);
   }
 
   /**
@@ -99,6 +117,14 @@ public class GrilController {
   @GetMapping("grils/agee/{age}")
   public List<Gril> findByAge(@PathVariable("age") Integer age) {
     return grilRepository.findByAge(age);
+  }
+
+  /**
+   * 新增一个测试方法.
+   */
+
+  public Gril findOne(Integer id) {
+    return grilRepository.findOne(id);
   }
 
 
