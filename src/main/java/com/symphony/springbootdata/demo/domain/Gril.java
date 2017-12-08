@@ -13,12 +13,24 @@ import lombok.Data;
 @Data
 public class Gril {
 
+  @Override
+  public String toString() {
+    return "Gril{" +
+        "id=" + id +
+        ", name='" + name + '\'' +
+        ", age=" + age +
+        ", phoneNum='" + phoneNum + '\'' +
+        '}';
+  }
+
   @Id //主键
   @GeneratedValue //自增策略
   private Integer id;
   private String name;
   @Min(value = 18, message = "未成年") //
   private Integer age;
+  private String phoneNum;
+
 
   public Gril(String name, Integer age) {
     this.name = name;
@@ -34,12 +46,5 @@ public class Gril {
     this.age = age;
   }
 
-  @Override
-  public String toString() {
-    return "Gril{" +
-        "id=" + id +
-        ", name='" + name + '\'' +
-        ", age=" + age +
-        '}';
-  }
+
 }

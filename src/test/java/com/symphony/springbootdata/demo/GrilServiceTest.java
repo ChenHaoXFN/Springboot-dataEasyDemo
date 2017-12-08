@@ -1,6 +1,7 @@
 package com.symphony.springbootdata.demo;
 
 import com.symphony.springbootdata.demo.domain.Gril;
+import com.symphony.springbootdata.demo.repository.GrilRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

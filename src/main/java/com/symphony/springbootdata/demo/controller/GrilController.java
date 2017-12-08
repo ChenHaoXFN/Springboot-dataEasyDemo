@@ -1,7 +1,7 @@
 package com.symphony.springbootdata.demo.controller;
 
 import com.symphony.springbootdata.demo.GrilPro;
-import com.symphony.springbootdata.demo.GrilRepository;
+import com.symphony.springbootdata.demo.repository.GrilRepository;
 import com.symphony.springbootdata.demo.Result.GrilResult;
 import com.symphony.springbootdata.demo.domain.Gril;
 import com.symphony.springbootdata.demo.service.GrilService;
