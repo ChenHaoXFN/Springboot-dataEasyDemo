@@ -60,6 +60,10 @@ public class HttpAspect {
     logger.info("2222222222");
   }
 
+  /**
+   * 返回参数.
+   * @param object
+   */
   @AfterReturning(returning = "object", pointcut = "log()")
   public void afterReturn(Object object){
     logger.info("response={}", object.toString());
