@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.symphony.springbootdata.demo.service.GrilServiceTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 4.769 sec <<< FAILURE! - in com.symphony.springbootdata.demo.service.GrilServiceTest
+findOne(com.symphony.springbootdata.demo.service.GrilServiceTest)  Time elapsed: 0.337 sec  <<< FAILURE!
+java.lang.AssertionError: Response content expected:<[{"id":1,"nam":"陈浩","age":24},{"id":2,"name":"2","age":20},{"id":3,"name":"陈浩","age":24},{"id":4,"name":"hello","age":20},{"id":5,"name":"陈浩","age":24},{"id":6,"name":"陈浩","age":20}]> but was:<[{"id":1,"name":"陈浩","age":24},{"id":2,"name":"2","age":20},{"id":3,"name":"陈浩","age":24},{"id":4,"name":"hello","age":20},{"id":5,"name":"陈浩","age":24},{"id":6,"name":"陈浩","age":20}]>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:54)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:81)
+	at org.springframework.test.web.servlet.result.ContentResultMatchers$5.match(ContentResultMatchers.java:150)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:171)
+	at com.symphony.springbootdata.demo.service.GrilServiceTest.findOne(GrilServiceTest.java:32)
+

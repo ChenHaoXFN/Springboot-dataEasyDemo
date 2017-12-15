@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.symphony.springbootdata.demo.DemoApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.827 sec - in com.symphony.springbootdata.demo.DemoApplicationTests
